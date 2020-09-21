@@ -12,7 +12,6 @@ module.exports.showCart = function(req,res){
 module.exports.addToCart = function (req,res){
     var productId = req.params.productId;
     var sessionId = req.signedCookies.sessionId;
-    //console.log(productId);
     if(!sessionId) {
         res.redirect('/products');
         return;
@@ -21,13 +20,23 @@ module.exports.addToCart = function (req,res){
     Product.findById(productId).then(function(product){
         cart.add(product,productId);
         req.session.cart = cart;
-        console.log(req.session.cart);
         res.redirect('/products');
     })
 } 
 
+module.exports.deleteCart = function(req,res){
+    var item = req.body;
+    var cart = new Cart (req.session.cart);
+    cart.delete(item.id);
+    req.session.cart = cart;
+    res.send(cart);
+} 
+
 module.exports.updateCart = function(req,res){
     var item = req.body;
-    res.send( item);
+    var cart = new Cart (req.session.cart);
+    cart.update(item.quantity,item.id)
+    req.session.cart = cart;
+    res.send(cart);
 } 
 

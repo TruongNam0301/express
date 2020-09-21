@@ -19,6 +19,12 @@ module.exports = function Cart (cartItem){
         this.totalPrice = this.totalPrice + quantity*this.items[id].product.price;
     }
     
+    this.delete = function(id){
+        this.totalPrice = this.totalPrice - this.items[id].quantity * this.items[id].product.price;
+        this.totalQuantity --;
+        delete this.items[id];
+    }
+
     this.listItem = function(){
         var arr = [];
         arr = Object.values(this.items);

@@ -10,6 +10,7 @@ block content
           th(scope='col') name
           th(scope='col') amount
           th(scope='col') price
+           th(scope='col') button
       tbody
         each item in cart
             tr(data-id= item.product._id)
@@ -19,6 +20,8 @@ block content
               td
                 input.form-control.cart-quantity-input(type='number', data-index='0', min='1', value= item.quantity)
               td= item.product.price
+              td
+                 a.btn.btn-primary.delete-cart-button Delete
   .total_price.float-right.d-inline-flex
     h3 total price: 
-    h3= totalPrice
+    h3.total-show #{totalPrice}
