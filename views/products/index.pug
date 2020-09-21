@@ -1,0 +1,43 @@
+extends ../layouts/common.pug
+
+block content
+    h1 list products
+    .row
+        each product in products
+            .col-3 
+                img(src= product.image, width='200', height='200')
+                .info
+                    h5= product.name
+                    h6 price #{product.price} 
+                    a.btn.btn-primary(href='/cart/add/'+product.id) Add To Cart
+
+    nav(aria-label='Page navigation example')
+        ul.pagination
+            //standing_page = 1 not have previous button
+            if(standing_page!=1) 
+                li.page-item
+                    a.page-link(href='/products?page='+ (standing_page-1) ) Previous
+            // page == standing_page add class active to button
+            - var pre_page = standing_page - 3 
+            if(pre_page < 1) 
+               - pre_page = 1
+            - var next_page = standing_page + 3
+            if(next_page > pages.length) 
+                - next_page = pages.length
+            if(standing_page >4 )
+                li.page-item
+                    h5 ...
+            - for(var i =pre_page  ;i<=next_page; ++i)
+                if(i == standing_page) 
+                    li.page-item.active
+                        a.page-link(href='/products?page='+ i ) #{i}
+                else
+                    li.page-item
+                        a.page-link(href='/products?page='+ i ) #{i}
+            if(next_page <= pages.length -1 )
+                li.page-item
+                    h5 ...   
+            // standing_page = pages.length(the last page) not have next button
+            if(standing_page!=pages.length) 
+                li.page-item
+                    a.page-link(href='/products?page='+ (standing_page+1) ) Next

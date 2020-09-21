@@ -1,0 +1,23 @@
+extends ../layouts/common.pug
+block content
+
+  h1 Users
+  a.btn.btn-danger(href='/users/create') Add New
+  table.table.table-bordered.table-dark
+    thead
+      tr
+        th(scope='col') avatar
+        th(scope='col') name
+        th(scope='col') age
+        th(scope='col') button
+    tbody
+      each user in users
+        tr
+          td
+            image(src='/images/avatar/'+user.avatar, width='50',height='50')
+          td= user.name
+          td= user.age
+          td 
+            a.btn.btn-primary(href='/users/'+user.id) View
+          
+

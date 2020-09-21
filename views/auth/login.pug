@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+block content
+    form(action='/auth/login', method='POST')
+        .form-group
+            label Username
+            input#formInput1.form-control(type='text',name='username', placeholder='username input' )
+            alert.d-flex.alert-danger=errorUsername? errorUsername :''
+        .form-group
+            label Password
+            input#formInput2.form-control(type='password',name='password', placeholder='password input')
+            alert.d-flex.alert-danger=errorPassword? errorPassword :''
+        button.btn.btn-primary(type='submit') Submit
+ 
+        

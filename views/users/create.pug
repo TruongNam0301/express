@@ -1,0 +1,16 @@
+extends ../layouts/common.pug
+block content
+    h1 Create New User
+    form(action='/users/create', method='POST', enctype="multipart/form-data")
+        .form-group
+            label Name
+            input#formInput1.form-control(type='text',name='name', placeholder='Name input', value= values ? values.name :'' )
+            alert.d-flex.alert-danger=errors? errors.name :''
+        .form-group
+            label Age
+            input#formInput2.form-control(type='text',name='age', placeholder='Age input', value= values ? values.age :'')
+            alert.d-flex.alert-danger=errors? errors.age :null
+        .form-group
+            label avatar
+            input#formChooseFile1.form-control-file(name='avatar', type='file')
+        button.btn.btn-primary(type='submit') Submit
