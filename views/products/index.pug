@@ -4,12 +4,12 @@ block content
     h1 list products
     .row
         each product in products
-            .col-3 
+            .col-3(data-id= product.id)
                 img(src= product.image, width='200', height='200')
                 .info
                     h5= product.name
                     h6 price #{product.price} 
-                    a.btn.btn-primary(href='/cart/add/'+product.id) Add To Cart
+                    a.btn.btn-primary.add-cart-button Add To Cart
 
     nav(aria-label='Page navigation example')
         ul.pagination
@@ -24,20 +24,32 @@ block content
             - var next_page = standing_page + 3
             if(next_page > pages.length) 
                 - next_page = pages.length
-            if(standing_page >4 )
+            if(standing_page > 4 && pre_page >2 )
+                li.page-item
+                    a.page-link(href='/products?page='+ 1 ) #{1} 
                 li.page-item
                     h5 ...
-            - for(var i =pre_page  ;i<=next_page; ++i)
+            if(standing_page > 4 && pre_page == 2 ) 
+                li.page-item
+                    a.page-link(href='/products?page='+ 1 ) #{1} 
+            - for(var i = pre_page  ;i<=next_page; ++i)
                 if(i == standing_page) 
                     li.page-item.active
                         a.page-link(href='/products?page='+ i ) #{i}
                 else
                     li.page-item
                         a.page-link(href='/products?page='+ i ) #{i}
-            if(next_page <= pages.length -1 )
+            if(standing_page < pages.length -4  )
                 li.page-item
-                    h5 ...   
+                    h5 ... 
+                li.page-item
+                    a.page-link(href='/products?page='+ pages.length ) #{pages.length}   
+            if(standing_page == pages.length -4)
+                li.page-item
+                    a.page-link(href='/products?page='+ pages.length ) #{pages.length}  
             // standing_page = pages.length(the last page) not have next button
             if(standing_page!=pages.length) 
                 li.page-item
                     a.page-link(href='/products?page='+ (standing_page+1) ) Next
+block script
+    script(src='/js/products.js')

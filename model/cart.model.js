@@ -14,14 +14,16 @@ module.exports = function Cart (cartItem){
     } 
 
     this.update= function(quantity,id){
-        this.totalPrice = this.totalPrice - this.items[id].product.price*this.items[id].quantity;
+        this.totalPrice = (this.totalPrice - this.items[id].product.price*this.items[id].quantity) + quantity*this.items[id].product.price;
+        this.totalQuantity = (this.totalQuantity - this.items[id].quantity)+ quantity;
         this.items[id].quantity = quantity;
-        this.totalPrice = this.totalPrice + quantity*this.items[id].product.price;
+        // this.totalQuantity = this.totalQuantity + quantity ;
+        // this.totalPrice = this.totalPrice + quantity*this.items[id].product.price;
     }
     
     this.delete = function(id){
         this.totalPrice = this.totalPrice - this.items[id].quantity * this.items[id].product.price;
-        this.totalQuantity --;
+        this.totalQuantity = this.totalQuantity - this.items[id].quantity ;
         delete this.items[id];
     }
 

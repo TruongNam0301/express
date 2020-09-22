@@ -1,4 +1,4 @@
-const db = require('../db');
+const Cart = require('../model/cart.model');
 const shortid = require('shortid');
 
 module.exports.createSessionId = function (req,res,next){
@@ -8,5 +8,7 @@ module.exports.createSessionId = function (req,res,next){
             signed: true 
         });
     }
+    var cart = new Cart (req.session.cart ? req.session.cart : {});
+        res.locals.cart = cart ;
     next();
 }

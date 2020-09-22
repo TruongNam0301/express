@@ -11,6 +11,7 @@ module.exports.checkAuth = function(req,res,next){
             return;
         } 
         res.locals.user = user;
+        
         next();
     })
     

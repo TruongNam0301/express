@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function(event) {
       ready();
 });
@@ -40,12 +39,14 @@ function updateQuantity (product){
 function deleteProduct(product){
     return function(){
         var productId = product.parentNode.parentNode.dataset.id; 
+        var cartItem = product.parentNode.parentNode
         $.ajax({
             url: '/cart/deleteCart',
             method: 'POST',
             data: {id: productId},
             success: function(data){
-                console.log(data);
+                $('.total-show').html(data.totalPrice);
+                cartItem.remove();
             }
         })
     }
