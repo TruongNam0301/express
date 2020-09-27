@@ -9,6 +9,6 @@ module.exports.createSessionId = function (req,res,next){
         });
     }
     var cart = new Cart (req.session.cart ? req.session.cart : {});
-        res.locals.cart = cart ;
+    res.locals.cart = cart ;
     next();
 }

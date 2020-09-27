@@ -30,7 +30,6 @@ module.exports.deleteCart = function(req,res){
     var cart = new Cart (req.session.cart);
     cart.delete(item.id);
     req.session.cart = cart;
-   
     res.send(cart);
 } 
 

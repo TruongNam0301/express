@@ -48,7 +48,7 @@ app.use(sessionMiddleWare.createSessionId);
 app.use('/users',authMiddleWare.checkAuth,userRouter);
 app.use('/auth',authRouter);
 app.use('/products',productsRouter);
-app.use('/cart',cartRouter);
+app.use('/cart',sessionMiddleWare.createSessionId,cartRouter);
 
 
 app.get('/',authMiddleWare.checkAuth, function(req,res){

@@ -1,6 +1,4 @@
 extends ../layouts/common.pug
-block script
-    script(src='/js/cart.js')
 block content
   h1 Cart
   table.table.table-bordered.table-light
@@ -25,3 +23,5 @@ block content
   .total_price.float-right.d-inline-flex
     h3 total price: 
     h3.total-show #{totalPrice}
+block script
+  script(src='/js/cart.js')

@@ -18,6 +18,12 @@ module.exports.show = function(req,res){
             pages: pages,
         })
     })
+}
 
-
+module.exports.showDetailProduct = async function(req,res){
+    var id = req.params.id;
+    var product = await Product.findById(id);
+    res.render('./products/detailProduct',{
+        product: product
+    })
 }

@@ -1,7 +1,6 @@
 extends ../layouts/common.pug
-
 block content
-    h1 list products
+    h1 list products 
     .row
         each product in products
             .col-3(data-id= product.id)
@@ -10,7 +9,7 @@ block content
                     h5= product.name
                     h6 price #{product.price} 
                     a.btn.btn-primary.add-cart-button Add To Cart
-
+                    a.btn.btn-danger.view-detail-button(href='/products/'+ product.id) View
     nav(aria-label='Page navigation example')
         ul.pagination
             //standing_page = 1 not have previous button

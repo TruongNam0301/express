@@ -1,0 +1,13 @@
+extends ../layouts/common.pug
+block content  
+    .container
+        .row(data-id= product.id)
+            .col
+                img(src= product.image,width=400 ,height= 400)
+            .col
+                h3= product.name
+                h5= product.price
+                p= product.description
+                a.btn.btn-primary.add-cart-button Add To Cart
+block script
+    script(src='/js/products.js')

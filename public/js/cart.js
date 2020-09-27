@@ -45,7 +45,7 @@ function deleteProduct(product){
             method: 'POST',
             data: {id: productId},
             success: function(data){
-                $('.total-show').html(data.totalPrice);
+                $('.total-show').html( data.totalPrice);
                 cartItem.remove();
             }
         })

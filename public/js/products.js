@@ -17,7 +17,7 @@ function addProduct(product){
             method: 'POST',
             data: {productId: productId},
             success : function (data){
-                $('.cart-quantity').html(data.totalQuantity);
+                $('.cart-quantity').html("Cart " + data.totalQuantity);
             }
         })
     }
