@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       ready();
 });
     
-
-
 function ready(){
     //delete Product in Cart
     var productsButton = document.getElementsByClassName('delete-cart-button');

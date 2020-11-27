@@ -1,4 +1,5 @@
-var Product = require('../model/product.model');
+var Product = require('../model/MonAn.model');
+var LoaiMA = require('../model/LoaiMA.model');
 
 module.exports.show = function(req,res){
     
@@ -25,5 +26,13 @@ module.exports.showDetailProduct = async function(req,res){
     var product = await Product.findById(id);
     res.render('./products/detailProduct',{
         product: product
+    })
+}
+
+module.exports.ShowList= async function(req,res){
+    var loai = req.query.loai;
+    var foods = await Product.find({LoaiMA: { _id: loai }}).populate('LoaiMA');
+    return res.render('./products/foodbytype',{
+        foods: foods
     })
 }

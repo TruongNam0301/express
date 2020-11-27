@@ -4,7 +4,7 @@ block content
     .row
         each product in products
             .col-3(data-id= product.id)
-                img(src= product.image, width='200', height='200')
+                img(src= product.image, width='250', height='200')
                 .info
                     h5= product.name
                     h6 price #{product.price} 
@@ -15,7 +15,7 @@ block content
             //standing_page = 1 not have previous button
             if(standing_page!=1) 
                 li.page-item
-                    a.page-link(href='/products?page='+ (standing_page-1) ) Previous
+                    a.page-link(href='/products/list?page='+ (standing_page-1) ) Previous
             // page == standing_page add class active to button
             - var pre_page = standing_page - 3 
             if(pre_page < 1) 
@@ -25,30 +25,30 @@ block content
                 - next_page = pages.length
             if(standing_page > 4 && pre_page >2 )
                 li.page-item
-                    a.page-link(href='/products?page='+ 1 ) #{1} 
+                    a.page-link(href='/products/list?page='+ 1 ) #{1} 
                 li.page-item
                     h5 ...
             if(standing_page > 4 && pre_page == 2 ) 
                 li.page-item
-                    a.page-link(href='/products?page='+ 1 ) #{1} 
+                    a.page-link(href='/products/list?page='+ 1 ) #{1} 
             - for(var i = pre_page  ;i<=next_page; ++i)
                 if(i == standing_page) 
                     li.page-item.active
-                        a.page-link(href='/products?page='+ i ) #{i}
+                        a.page-link(href='/products/list?page='+ i ) #{i}
                 else
                     li.page-item
-                        a.page-link(href='/products?page='+ i ) #{i}
+                        a.page-link(href='/products/list?page='+ i ) #{i}
             if(standing_page < pages.length -4  )
                 li.page-item
                     h5 ... 
                 li.page-item
-                    a.page-link(href='/products?page='+ pages.length ) #{pages.length}   
+                    a.page-link(href='/products/list?page='+ pages.length ) #{pages.length}   
             if(standing_page == pages.length -4)
                 li.page-item
-                    a.page-link(href='/products?page='+ pages.length ) #{pages.length}  
+                    a.page-link(href='/products/list?page='+ pages.length ) #{pages.length}  
             // standing_page = pages.length(the last page) not have next button
             if(standing_page!=pages.length) 
                 li.page-item
-                    a.page-link(href='/products?page='+ (standing_page+1) ) Next
+                    a.page-link(href='/products/list?page='+ (standing_page+1) ) Next
 block script
     script(src='/js/products.js')

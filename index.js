@@ -5,14 +5,14 @@ const mongoose = require('mongoose');
 const userRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
 const cartRouter = require('./routes/cart.route');
-const productsRouter = require('./routes/products.route');
+const productsRouter = require('./routes/MonAn.route');
+const LoaiMARouter = require('./routes/LoaiMA.route');
+
 const cookieParser = require('cookie-parser');
 const authMiddleWare = require('./middlewares/auth.middleware');
 const sessionMiddleWare = require('./middlewares/session.middleware');
 
 const path = require('path');
-
-
 
 var app = express();
 var port = 3000;
@@ -45,15 +45,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('Npddjqwm201')); // use to read format cookie
 
 app.use(sessionMiddleWare.createSessionId);
-app.use('/users',authMiddleWare.checkAuth,userRouter);
-app.use('/auth',authRouter);
+app.use('/users',userRouter);
+app.use('/',LoaiMARouter);
 app.use('/products',productsRouter);
 app.use('/cart',sessionMiddleWare.createSessionId,cartRouter);
 
 
-app.get('/',authMiddleWare.checkAuth, function(req,res){
-    res.render('index.pug');
-});
+
 
 app.listen(port,function(){
     console.log('server listens on port '+ port);

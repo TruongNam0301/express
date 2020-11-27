@@ -5,8 +5,12 @@ const productSchema = new mongoose.Schema({
   price: String,
   description: String,
   image: String,
+  LoaiMA: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'LoaiMA'
+    }
 });
 
-const Product = mongoose.model('Product', productSchema, 'products');
+const Product = mongoose.model('Product', productSchema, 'MonAn');
 
 module.exports = Product ;

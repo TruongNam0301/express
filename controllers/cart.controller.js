@@ -1,4 +1,4 @@
- var Product = require('../model/product.model');
+ var Product = require('../model/MonAn.model');
 const Cart = require('../model/cart.model');
 
 module.exports.showCart = function(req,res){

@@ -7,16 +7,16 @@ html
             a.navbar-brand(href='/') Hidden brand
             ul.navbar-nav.mr-auto.mt-2.mt-lg-0
                 li.nav-item.active
-                    a.nav-link(href='/') Home 
+                    a.nav-link(href='/') Menu
                 li.nav-item
-                    a.nav-link(href='/users/') Users
+                    a.nav-link(href='#') 
                 li.nav-item
-                    a.nav-link(href='/products/') Products
+                    a.nav-link(href='/products/list') Foods
                 li.nav-item
                     a.cart-quantity.nav-link(href='/cart/') Cart #{cart.totalQuantity}
                 if(user)
                     li.nav-item
-                        a.nav-link(href='/auth/logout') Log out  
+                        a.nav-link(href='/auth/logout')
             if(sessionId)
                 h5= sessionId
             if(user)
