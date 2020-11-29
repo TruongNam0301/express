@@ -1,13 +1,16 @@
 extends ../layouts/common.pug
+block styles
+    link(rel="stylesheet" type="text/css" href="/styles/product.css")
 block content
     .row
        each product in foods
-            .col-3(data-id= product.id)
-                img(src= product.image, width='200', height='200')
+            .col-3.product(data-id= product.id)
+                img(src= product.image, width='250', height='200')
                 .info
                     h5= product.name
                     h6 price #{product.price} 
-                    a.btn.btn-primary.add-cart-button Add To Cart
-                    a.btn.btn-danger.view-detail-button(href='/products/'+ product.id) View
+                    .button
+                        a.btn.btn-primary.add-cart-button Add To Cart
+                        a.btn.btn-danger.view-detail-button(href='/products/'+ product.id) View
 block script
     script(src='/js/products.js')

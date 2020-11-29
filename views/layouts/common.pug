@@ -2,18 +2,19 @@ html
     head
         block styles
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="/styles/custom.css")
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href='/') Hidden brand
+            a.navbar-brand(href='/') SELF RESTAURANT
             ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-                li.nav-item.active
-                    a.nav-link(href='/') Menu
+                li.nav-item
+                    a.nav-link(href='/') HOME
                 li.nav-item
                     a.nav-link(href='#') 
                 li.nav-item
-                    a.nav-link(href='/products/list') Foods
+                    a.nav-link(href='/products/list') MENU-TODAY
                 li.nav-item
-                    a.cart-quantity.nav-link(href='/cart/') Cart #{cart.totalQuantity}
+                    a.cart-quantity.nav-link(href='/cart/') FOOD ORDER: #{cart.totalQuantity}
                 if(user)
                     li.nav-item
                         a.nav-link(href='/auth/logout')

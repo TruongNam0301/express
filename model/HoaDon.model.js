@@ -6,6 +6,6 @@ const HoaDonMASchema = new mongoose.Schema({
     TinhTrang : String,
 });
 
-const HoaDon = mongoose.model('HoaDon', LoaiMASchema, 'HoaDon');
+const HoaDon = mongoose.model('HoaDon', HoaDonMASchema, 'HoaDon');
 
 module.exports = HoaDon

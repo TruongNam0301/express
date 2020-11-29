@@ -1,0 +1,22 @@
+extends ../layouts/common.pug
+block content
+    h1 Bills
+    table.table.table-bordered.table-light
+        thead
+            tr
+            th(scope='col') image
+            th(scope='col') name
+            th(scope='col') amount
+            th(scope='col') price
+            th(scope='col') status
+        tbody
+            each item in arr ?arr :[]
+                tr.cart-item(data-id= item._id)
+                    td
+                        image(src= item.MonAn.image, width='50',height='50')
+                    td= item.MonAn.name
+                    td= item.SoLuong
+                    td= item.MonAn.price
+                    td= item.TinhTrang      
+    .total_price.float-right.d-inline-flex
+        h3 total price: 

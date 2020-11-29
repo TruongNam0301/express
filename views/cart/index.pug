@@ -1,6 +1,6 @@
 extends ../layouts/common.pug
 block content
-  h1 Cart
+  h1 FOODS ORDERED
   table.table.table-bordered.table-light
       thead
         tr
@@ -10,7 +10,7 @@ block content
           th(scope='col') price
            th(scope='col') button
       tbody
-        each item in cart
+        each item in cart ? cart :{}
             tr.cart-item(data-id= item.product._id)
               td
                 image(src= item.product.image, width='50',height='50')
@@ -23,6 +23,7 @@ block content
   .total_price.float-right.d-inline-flex
     h3 total price: 
     h3.total-show #{totalPrice}
-    a.btn.btn-success.add-cart-button Dat Hoa Don
+    a(href='/Bill/create').btn.btn-success.add-cart-button Dat Hoa Don
+    
 block script
   script(src='/js/cart.js')

@@ -1,0 +1,13 @@
+.product{
+    margin-top: 20px;
+   
+   
+}
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.pagination{
+    margin-top: 20px;
+}

@@ -11,6 +11,6 @@ const productSchema = new mongoose.Schema({
     }
 });
 
-const Product = mongoose.model('Product', productSchema, 'MonAn');
+const MonAn = mongoose.model('Product', productSchema, 'MonAn');
 
-module.exports = Product ;
+module.exports = MonAn ;

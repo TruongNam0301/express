@@ -11,13 +11,13 @@ function ready(){
 }
 function addProduct(product){
     return function(){
-        var productId = product.parentNode.parentNode.dataset.id;
+        var productId = product.parentNode.parentNode.parentNode.dataset.id;
         $.ajax({
             url: '/cart/addToCart',
             method: 'POST',
             data: {productId: productId},
             success : function (data){
-                $('.cart-quantity').html("Cart " + data.totalQuantity);
+                $('.cart-quantity').html("FOOD ORDER: " + data.totalQuantity);
             }
         })
     }

@@ -1,18 +1,20 @@
 var mongoose = require("mongoose");
+var MonAn = require('./MonAn.model');
 
-const ChiTietHHSchema = new mongoose.Schema({
+const ChiTietHDSchema = new mongoose.Schema({
     MonAn: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'MonAn'
-    }.
-    MaHD:{
+        ref: MonAn
+    },
+    HoaDon:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'HoaDon'
-    }
+    },
     SoLuong:Number,
     TinhTrang : String,
-});
+}
+);
 
-const HoaDon = mongoose.model('ChiTietHH', ChiTietHHSchema, 'ChiTietHH');
+const ChiTietHD = mongoose.model('ChiTietHD', ChiTietHDSchema, 'ChiTietHD');
 
-module.exports = ChiTietHH
+module.exports = ChiTietHD

@@ -3,7 +3,6 @@ const Cart = require('../model/cart.model');
 
 module.exports.showCart = function(req,res){
     var cart = new Cart (req.session.cart ? req.session.cart :{});
-    console.log(cart);
     res.render('./cart',{
         cart: cart.listItem(),
         totalPrice: cart.totalPrice,

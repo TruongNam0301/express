@@ -1,15 +1,18 @@
 extends ../layouts/common.pug
+block styles
+    link(rel="stylesheet" type="text/css" href="/styles/product.css")
 block content
-    h1 list products 
+    h1 LIST FOOD FOR TODAY OF RESTAURANT
     .row
         each product in products
-            .col-3(data-id= product.id)
+            .col-3.product(data-id= product.id)
                 img(src= product.image, width='250', height='200')
                 .info
                     h5= product.name
                     h6 price #{product.price} 
-                    a.btn.btn-primary.add-cart-button Add To Cart
-                    a.btn.btn-danger.view-detail-button(href='/products/'+ product.id) View
+                    .button
+                        a.btn.btn-primary.add-cart-button Order Food
+                        a.btn.btn-danger.view-detail-button(href='/products/'+ product.id) View Detail
     nav(aria-label='Page navigation example')
         ul.pagination
             //standing_page = 1 not have previous button

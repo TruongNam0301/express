@@ -2,6 +2,8 @@ const express = require('express');
 const session = require('express-session');
 const pug = require('pug');
 const mongoose = require('mongoose');
+
+const HoaDonRouter = require('./routes/HoaDon.route')
 const userRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
 const cartRouter = require('./routes/cart.route');
@@ -17,7 +19,7 @@ const path = require('path');
 var app = express();
 var port = 3000;
 //connect mongodb 
-mongoose.connect('mongodb://localhost/express_ex', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/express_ex', {useNewUrlParser: true,useUnifiedTopology: true});
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -48,6 +50,7 @@ app.use(sessionMiddleWare.createSessionId);
 app.use('/users',userRouter);
 app.use('/',LoaiMARouter);
 app.use('/products',productsRouter);
+app.use('/Bill',HoaDonRouter);
 app.use('/cart',sessionMiddleWare.createSessionId,cartRouter);
 
 
